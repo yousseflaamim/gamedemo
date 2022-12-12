@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -36,3 +37,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+=======
+.idea/.gitignore
+.idea/HangmanSkolProjekt.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+>>>>>>> 42c2e69 (no message)
