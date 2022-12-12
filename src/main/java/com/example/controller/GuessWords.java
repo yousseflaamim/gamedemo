@@ -15,7 +15,7 @@ public class GuessWords {
                 list.get(i).setGreenLight( true );
 
 //                test input a letter
-                if(list.get( i ).getFlag()==false){
+                if(!list.get( i ).getFlag( )){
                     matchLetter( list, i );
                 }
 
@@ -45,11 +45,7 @@ public class GuessWords {
         }
         
         list.get( i ).setTestList( chars );
-
-        showTestList( list, i );
-    }
-
-    private static void showTestList(ArrayList <Players> list, int i) {
+        
         System.out.println("Image's number: " + list.get( i ).getImage() );
 
         for (char c : list.get( i ).getTestList( )) {
@@ -60,7 +56,7 @@ public class GuessWords {
             }
         }
 
-        System.out.println("" );
+        System.out.println( );
     }
 
     private static long finishGame(ArrayList <Players> list){
