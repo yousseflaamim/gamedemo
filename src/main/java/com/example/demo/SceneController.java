@@ -14,6 +14,8 @@ public class SceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    boolean playMute = false;
+    AudioHandler audioHandler = new AudioHandler();
     public  void switchToScene1(ActionEvent event) throws IOException {
         Parent root =  FXMLLoader.load(getClass().getResource("Scene.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -29,6 +31,13 @@ public class SceneController {
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    public void playMuteAudio(){
+        playMute = !playMute;
+
+        audioHandler.playMuteSong(playMute);
 
     }
 
