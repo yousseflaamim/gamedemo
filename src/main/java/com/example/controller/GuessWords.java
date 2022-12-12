@@ -45,15 +45,13 @@ public class GuessWords {
         }
         
         list.get( i ).setTestList( chars );
-        
-        System.out.println(list.get( i ).getImage() );
 
         showTestList( list, i );
-
-        System.out.println("" );
     }
 
     private static void showTestList(ArrayList <Players> list, int i) {
+        System.out.println("Image's number: " + list.get( i ).getImage() );
+
         for (char c : list.get( i ).getTestList( )) {
             if(c>122 || c<97){
                 System.out.print("* " );
@@ -61,6 +59,8 @@ public class GuessWords {
                 System.out.print(c + " ");
             }
         }
+
+        System.out.println("" );
     }
 
     private static long finishGame(ArrayList <Players> list){
