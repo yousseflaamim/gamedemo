@@ -6,7 +6,7 @@ import javax.sound.sampled.Clip;
 
 public class AudioHandler {
     Clip clip;
-    public void audioHandler(boolean mode) {
+    public void playMuteSong(boolean mode) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("Happy.wav"));
             if (mode) {

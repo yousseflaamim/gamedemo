@@ -44,5 +44,10 @@
             <Font name="Algerian" size="20.0" />
          </font>
       </Button>
+      <Button layoutX="550" layoutY="0" mnemonicParsing="false" onAction="#playMuteAudio" prefHeight="20.0" prefWidth="140.0" text="Sound ON/OFF">
+         <font>
+            <Font name="Algerian" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
