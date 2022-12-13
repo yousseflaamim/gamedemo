@@ -11,7 +11,7 @@ public class GuessWords {
 
         flag:while (true){
             for (int i = 0; i < list.size( ); i++) {
-
+// frontend green light
                 list.get(i).setGreenLight( true );
 
 //                test input a letter
@@ -31,8 +31,9 @@ public class GuessWords {
     }
 
     private static void matchLetter(ArrayList <Players> list, int i) {
+//        frontend
         Scanner scanner = new Scanner( System.in );
-        System.out.println("please input a letter, player " + list.get( i ));
+        System.out.println("please input a letter, player " + list.get( i )+ "this is player"+i);
         char s = scanner.next( ).toLowerCase( ).charAt( 0 );
         char[] chars = list.get( i ).getTestList( );
 
@@ -40,6 +41,7 @@ public class GuessWords {
             if(s == list.get( i ).getShowingList()[j]){
 
                 chars[j] = s;
+//                frontend connecting control images
                 list.get( i ).setImage( list.get(i).getImage()-1 );
             }
         }
