@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -38,6 +40,30 @@ public class SceneController {
     public Label word2;
     public Label word3;
     public Label word4;
+    public Image img1Horse3;
+    public Image img1Horse4;
+    public Image img1Horse5;
+    public Image img1Horse6;
+    public Image img1Horse8;
+    public ImageView img1;
+    public ImageView img2;
+    public Image img2Horse3;
+    public Image img2Horse4;
+    public Image img2Horse5;
+    public Image img2Horse6;
+    public Image img2Horse8;
+    public Image img3Horse3;
+    public Image img3Horse4;
+    public Image img3Horse5;
+    public Image img3Horse6;
+    public Image img3Horse8;
+    public ImageView img4;
+    public ImageView img3;
+    public Image img4Horse3;
+    public Image img4Horse4;
+    public Image img4Horse5;
+    public Image img4Horse6;
+    public Image img4Horse8;
 
     private Stage stage;
     private Scene scene;
@@ -154,13 +180,13 @@ public class SceneController {
     public void setPlayer1(Players player1) {
         this.player1 = player1;
     }
-    
+
     public  void setPlayer2(Players player2){
         this.player2 = player2;
-    }    
+    }
     public  void setPlayer3(Players player3){
         this.player3 = player3;
-    }    
+    }
     public  void setPlayer4(Players player4){
         this.player4 = player4;
     }
@@ -187,7 +213,11 @@ public class SceneController {
         String word = getTmp(this.player1, s );
 
         word1.setText( word );
+
+        selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
     }
+
+
 
 
     public void selectPlayer2(ActionEvent actionEvent) {
@@ -196,12 +226,21 @@ public class SceneController {
 
         word2.setText( word );
 
+        selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
+
+
+
+
     }
 
     public void selectPlayer3(ActionEvent actionEvent) {
         String word = getTmp(this.player3, s );
 
         word3.setText( word );
+
+        selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
+
+
 
     }
 
@@ -211,6 +250,7 @@ public class SceneController {
 
         word4.setText( word );
 
+        selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
     }
 
     private String getTmp(Players player, String s) {
@@ -240,6 +280,18 @@ public class SceneController {
         }
         System.out.println(player );
         return word;
+    }
+
+    private void selectImage(Players players, ImageView imageView, Image image1, Image image2, Image image3,
+                             Image image4, Image image5) {
+        switch (players.getImage()){
+            case(5)->imageView.setVisible( false );
+            case(4)->imageView.setImage( image1 );
+            case(3)->imageView.setImage( image2 );
+            case(2)->imageView.setImage( image3 );
+            case(1)->imageView.setImage( image4 );
+            case(0)->imageView.setImage( image5 );
+        }
     }
 
 

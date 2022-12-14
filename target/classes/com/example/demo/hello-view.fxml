@@ -204,24 +204,40 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Label>
-        <ImageView id="img1" fitHeight="150.0" fitWidth="121.0" layoutX="6.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img1" id="img1" fitHeight="150.0" fitWidth="121.0" layoutX="6.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true" visible="true">
             <image>
-                <Image url="@images/Horse3.png" />
+                <Image fx:id="img1Horse3" url="@images/Horse3.png" />
+                <Image fx:id="img1Horse4" url="@images/Horse4.png" />
+                <Image fx:id="img1Horse5" url="@images/Horse5.png" />
+                <Image fx:id="img1Horse6" url="@images/Horse6.png" />
+                <Image fx:id="img1Horse8" url="@images/Horse8.png" />
             </image>
         </ImageView>
-        <ImageView id="img2" fitHeight="150.0" fitWidth="121.0" layoutX="193.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img2" id="img2" fitHeight="150.0" fitWidth="121.0" layoutX="193.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Horse3.png" />
+                <Image fx:id="img2Horse3" url="@images/Horse3.png" />
+                <Image fx:id="img2Horse4" url="@images/Horse4.png" />
+                <Image fx:id="img2Horse5" url="@images/Horse5.png" />
+                <Image fx:id="img2Horse6" url="@images/Horse6.png" />
+                <Image fx:id="img2Horse8" url="@images/Horse8.png" />
             </image>
         </ImageView>
-        <ImageView id="img3" fitHeight="150.0" fitWidth="121.0" layoutX="404.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img3" id="img3" fitHeight="150.0" fitWidth="121.0" layoutX="404.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Horse3.png" />
+                <Image fx:id="img3Horse3" url="@images/Horse3.png" />
+                <Image fx:id="img3Horse4" url="@images/Horse4.png" />
+                <Image fx:id="img3Horse5" url="@images/Horse5.png" />
+                <Image fx:id="img3Horse6" url="@images/Horse6.png" />
+                <Image fx:id="img3Horse8" url="@images/Horse8.png" />
             </image>
         </ImageView>
-        <ImageView id="img4" fitHeight="131.0" fitWidth="121.0" layoutX="573.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="img4" id="img4" fitHeight="131.0" fitWidth="121.0" layoutX="573.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/Horse3.png" />
+                <Image fx:id="img4Horse3" url="@images/Horse3.png" />
+                <Image fx:id="img4Horse4" url="@images/Horse4.png" />
+                <Image fx:id="img4Horse5" url="@images/Horse5.png" />
+                <Image fx:id="img4Horse6" url="@images/Horse6.png" />
+                <Image fx:id="img4Horse8" url="@images/Horse8.png" />
             </image>
         </ImageView>
     </children>
