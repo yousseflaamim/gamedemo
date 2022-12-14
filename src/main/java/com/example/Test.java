@@ -17,7 +17,7 @@ public class Test {
         ArrayList <Players> list = new ArrayList<>();
         Collections.addAll( list, player1, player2, player3, player4 );
 
-        InputWords.inputWord( list );
+//        InputWords.inputWord( list );
 //        test Inputwords function
 //        System.out.println(list );
 //        System.out.println( list.get( 0 ).getShowingList().length );
