@@ -1,5 +1,11 @@
-.idea/.gitignore
-.idea/HangmanSkolProjekt.iml
-.idea/misc.xml
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/vcs.xml
+
+### Mac OS ###
+.DS_Store
