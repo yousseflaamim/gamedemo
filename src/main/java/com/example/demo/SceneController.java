@@ -215,6 +215,7 @@ public class SceneController {
 
     private String getTmp(Players player, String s) {
         String word = "";
+        int count = player.getImage();
         char[] chars = s.toCharArray( );
         char[] list = player.getShowingList( );
         char[] tmp = player.getTestList();
@@ -222,9 +223,12 @@ public class SceneController {
         for (int i = 0; i < list.length; i++) {
             if(list[i] == chars[0]){
                 tmp[i] = list[i];
+                count--;
+
             }
         }
         player.setTestList( tmp );
+        player.setImage( count );
 
         for (char c : tmp) {
             if (c == 0){
