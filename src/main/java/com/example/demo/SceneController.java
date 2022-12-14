@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,6 +52,8 @@ public class SceneController {
     Players player4 = new Players( );
 
     String s = new String(  );
+
+
 
     public  void switchToScene1(ActionEvent event) throws IOException {
         Parent root =  FXMLLoader.load(getClass().getResource("Scene.fxml"));
@@ -122,6 +125,16 @@ public class SceneController {
         this.player3.setShowingList( this.player3.getTestingWord().toLowerCase().trim().toCharArray() );
         this.player4.setShowingList( this.player4.getTestingWord().toLowerCase().trim().toCharArray() );
 
+        char[] tmp1 = new char[this.player1.getTestingWord( ).trim( ).length( )];
+        char[] tmp2 = new char[this.player2.getTestingWord( ).trim( ).length( )];
+        char[] tmp3 = new char[this.player3.getTestingWord( ).trim( ).length( )];
+        char[] tmp4 = new char[this.player4.getTestingWord( ).trim( ).length( )];
+
+        this.player1.setTestList( tmp1 );
+        this.player2.setTestList( tmp2 );
+        this.player3.setTestList( tmp3 );
+        this.player4.setTestList( tmp4 );
+
 
         System.out.println(this.player1 );
         System.out.println(this.player2 );
@@ -169,54 +182,60 @@ public class SceneController {
     }
 
     public void selectPlayer1(ActionEvent actionEvent) {
-        char[] tmp = getChars(this.player1 );
 
-        this.player1.setTestList( tmp );
-        System.out.println(this.player1 );
+
+        String word = getTmp(this.player1, s );
+
+        word1.setText( word );
     }
 
-    public void selectPlayer2(ActionEvent actionEvent) {
-        char[] tmp = getChars(this.player2 );
 
-        this.player2.setTestList( tmp );
-        System.out.println(this.player2 );
+    public void selectPlayer2(ActionEvent actionEvent) {
+
+        String word = getTmp(this.player2, s );
+
+        word2.setText( word );
+
     }
 
     public void selectPlayer3(ActionEvent actionEvent) {
-        char[] tmp = getChars(this.player3 );
+        String word = getTmp(this.player3, s );
 
-        this.player3.setTestList( tmp );
-        System.out.println(this.player3 );
+        word3.setText( word );
+
     }
 
     public void selectPlayer4(ActionEvent actionEvent) {
-        char[] tmp = getChars(this.player4 );
 
-        this.player4.setTestList( tmp );
-        System.out.println(this.player4 );
+        String word = getTmp(this.player4, s );
+
+        word4.setText( word );
+
     }
 
-
-    private char[] getChars(Players player) {
+    private String getTmp(Players player, String s) {
+        String word = "";
         char[] chars = s.toCharArray( );
-
-
         char[] list = player.getShowingList( );
-        char[] tmp = new char[list.length];
-
+        char[] tmp = player.getTestList();
 
         for (int i = 0; i < list.length; i++) {
             if(list[i] == chars[0]){
                 tmp[i] = list[i];
             }
         }
+        player.setTestList( tmp );
 
         for (char c : tmp) {
-            if(c == 0){
-                c = '*';
+            if (c == 0){
+                word+='*';
+            }else{
+                word+=c;
             }
+
         }
-        return tmp;
+        System.out.println(player );
+        return word;
     }
 
 
