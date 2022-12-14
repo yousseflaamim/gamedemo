@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -32,6 +33,10 @@ public class SceneController {
     public Button play2;
     public Button play3;
     public Button play4;
+    public Label word1;
+    public Label word2;
+    public Label word3;
+    public Label word4;
 
     private Stage stage;
     private Scene scene;
@@ -191,52 +196,6 @@ public class SceneController {
         System.out.println(this.player4 );
     }
 
-
- /*   @FXML
-   public void selectPlayer1(ActionEvent event) {
-        char[] tmp = getChars(this.player1 );
-
-        this.player1.setTestList( tmp );
-        System.out.println(this.player1 );
-
-
-    }
-
-
-
-
-    @FXML
-    public void selectPlayer2(ActionEvent event) {
-
-        char[] tmp = getChars(this.player2 );
-
-        this.player2.setTestList( tmp );
-        System.out.println(this.player2 );
-
-
-    }
-
-
-    @FXML
-    public void selectPlayer3(ActionEvent event) {
-        char[] tmp = getChars(this.player3 );
-
-        this.player3.setTestList( tmp );
-        System.out.println(this.player3 );
-
-
-    }
-
-    @FXML
-    public void selectPlayer4(ActionEvent event) {
-        char[] tmp = getChars(this.player4 );
-
-        this.player4.setTestList( tmp );
-
-        System.out.println(this.player4 );
-
-
-    }*/
 
     private char[] getChars(Players player) {
         char[] chars = s.toCharArray( );
