@@ -6,6 +6,7 @@ target/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/vcs.xml
+.idea/src/main/java/module-info.java
 
 ### Mac OS ###
 .DS_Store
