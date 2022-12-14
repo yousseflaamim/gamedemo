@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.SceneController">
+   <children>
+      <ImageView fitHeight="500.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Forest.png" />
+         </image>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ImageView>
+      <Button id="f" layoutX="110.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="F">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="d" layoutX="66.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="29.0" prefWidth="35.0" text="D">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="g" layoutX="147.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="G">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="h" layoutX="187.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="H">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="j" layoutX="225.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="J">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="k" layoutX="262.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="K">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="q" layoutX="73.0" layoutY="318.0" mnemonicParsing="false" opacity="0.65" prefHeight="25.0" prefWidth="28.0" text="Q">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="w" layoutX="110.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="W">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <Button id="e" layoutX="147.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="E">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="r" layoutX="187.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="R">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="t" layoutX="225.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="T">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="y" layoutX="262.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="Y">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="m" layoutX="619.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="29.0" prefWidth="35.0" text="M">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="619.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="S">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="585.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="A">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="n" layoutX="585.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="N">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="p" layoutX="549.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="P">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="b" layoutX="549.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="B">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="o" layoutX="515.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="O">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="v" layoutX="515.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="V">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="i" layoutX="479.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="I">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="c" layoutX="479.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="C">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="u" layoutX="444.0" layoutY="318.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="U">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="x" layoutX="444.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="X">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="z" layoutX="410.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="Z">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="l" layoutX="297.0" layoutY="351.0" mnemonicParsing="false" opacity="0.46" prefHeight="25.0" prefWidth="28.0" text="L">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button id="stop" layoutX="333.0" layoutY="351.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: RED;" text="STOP" />
+      <Button id="star" layoutX="306.0" layoutY="318.0" mnemonicParsing="false" opacity="0.69" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: GREEN;" text="STAR">
+         <effect>
+            <ColorAdjust brightness="-0.02" contrast="1.0" hue="0.03" saturation="1.0" />
+         </effect>
+      </Button>
+      <Button id="play1" layoutX="16.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: GREEN;" text="PLAY 1">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button id="play2" layoutX="218.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: RED;" text="PLAY 2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField id="wordgeuss1" layoutY="269.0" prefHeight="25.0" prefWidth="110.0" />
+      <Button id="play3" layoutX="423.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: RED;" text="PLAY 2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button id="play4" layoutX="612.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: RED;" text="PLAY 2">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField id="wordgeuss3" layoutX="412.0" layoutY="269.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField id="wordgeuss4" layoutX="577.0" layoutY="269.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField id="wordgeuss2" layoutX="207.0" layoutY="269.0" prefHeight="25.0" prefWidth="110.0" />
+      <Label id="word1" layoutX="4.0" layoutY="250.0" prefHeight="17.0" prefWidth="102.0" text="---------------">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label id="word2" layoutX="211.0" layoutY="246.0" prefHeight="25.0" prefWidth="102.0" text="-------------">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="word3" layoutX="421.0" layoutY="246.0" prefHeight="25.0" prefWidth="102.0" text="---------------">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label id="word4" layoutX="586.0" layoutY="246.0" prefHeight="25.0" prefWidth="102.0" text="-----------------">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ImageView id="img1" fitHeight="150.0" fitWidth="121.0" layoutX="6.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Documents/golden-star-3d_1053-79.jpg" />
+         </image>
+      </ImageView>
+      <ImageView id="img2" fitHeight="150.0" fitWidth="121.0" layoutX="193.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Documents/golden-star-3d_1053-79.jpg" />
+         </image>
+      </ImageView>
+      <ImageView id="img3" fitHeight="150.0" fitWidth="121.0" layoutX="404.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Documents/golden-star-3d_1053-79.jpg" />
+         </image>
+      </ImageView>
+      <ImageView id="img4" fitHeight="131.0" fitWidth="121.0" layoutX="573.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Documents/golden-star-3d_1053-79.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

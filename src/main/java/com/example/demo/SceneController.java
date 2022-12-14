@@ -8,30 +8,36 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class SceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    boolean playMute = false;
+    AudioHandler audioHandler = new AudioHandler();
+    public  void switchToScene1(ActionEvent event) throws IOException {
+        Parent root =  FXMLLoader.load(getClass().getResource("Scene.fxml"));
+        stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
-    public void switchToScene1(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Scene.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+    }
+    public  void switchToScene2(ActionEvent event) throws IOException {
+
+        Parent root =  FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+        stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
 
     }
 
-    public void switchToScene2(ActionEvent event) throws IOException {
+    public void playMuteAudio(){
+        playMute = !playMute;
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        audioHandler.playMuteSong(playMute);
 
     }
 
