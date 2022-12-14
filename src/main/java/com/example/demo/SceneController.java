@@ -228,7 +228,7 @@ public class SceneController {
 
         for (char c : tmp) {
             if (c == 0){
-                word+='*';
+                word+='-';
             }else{
                 word+=c;
             }
