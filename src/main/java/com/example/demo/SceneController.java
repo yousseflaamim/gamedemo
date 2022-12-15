@@ -19,9 +19,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 import java.util.function.Consumer;
 
 
@@ -79,6 +77,7 @@ public class SceneController {
 
     String s = new String(  );
 
+    ArrayList<Players> list = new ArrayList<>();
 
 
     public  void switchToScene1(ActionEvent event) throws IOException {
@@ -110,6 +109,9 @@ public class SceneController {
 
 
 
+        Collections.addAll( list, this.player1, this.player2, this.player3, this.player4 );
+
+
 
         String guess1Text = passwordGuess1.getText( );
         String guess2Text = passwordGuess2.getText( );
@@ -120,55 +122,33 @@ public class SceneController {
         this.player3.setSettingWord( guess3Text );
         this.player4.setSettingWord( guess4Text );
 
+        shuffle( list );
 
 
 
-        Random random = new Random( );
-        int i = random.nextInt( 1, 4 );
-        switch (i){
-            case(1)->{
-                this.player1.setTestingWord( this.player2.getSettingWord() );
-                this.player2.setTestingWord( this.player1.getSettingWord() );
-                this.player3.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player3.getSettingWord() );
-            }
-            case(2)->{
-                this.player1.setTestingWord( this.player3.getSettingWord() );
-                this.player3.setTestingWord( this.player1.getSettingWord() );
-                this.player2.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player2.getSettingWord() );
-            }
-            case(3)->{
-                this.player1.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player1.getSettingWord() );
-                this.player2.setTestingWord( this.player3.getSettingWord() );
-                this.player3.setTestingWord( this.player2.getSettingWord() );
-            }
-        }
-
-        this.player1.setShowingList( this.player1.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player2.setShowingList( this.player2.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player3.setShowingList( this.player3.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player4.setShowingList( this.player4.getTestingWord().toLowerCase().trim().toCharArray() );
-
-        char[] tmp1 = new char[this.player1.getTestingWord( ).trim( ).length( )];
-        char[] tmp2 = new char[this.player2.getTestingWord( ).trim( ).length( )];
-        char[] tmp3 = new char[this.player3.getTestingWord( ).trim( ).length( )];
-        char[] tmp4 = new char[this.player4.getTestingWord( ).trim( ).length( )];
-
-        this.player1.setTestList( tmp1 );
-        this.player2.setTestList( tmp2 );
-        this.player3.setTestList( tmp3 );
-        this.player4.setTestList( tmp4 );
+        list.forEach( players -> players.setShowingList( players.getTestingWord().toCharArray() ) );
+        list.forEach(players -> {
+                    int length = players.getShowingList( ).length;
+                    char[] tmp = new char[length];
+                    players.setTestList( tmp );
+                }
+        );
 
 
-        System.out.println(this.player1 );
-        System.out.println(this.player2 );
-        System.out.println(this.player3 );
-        System.out.println(this.player4 );
-        System.out.println(s );
+        list.forEach(  players-> System.out.println(players ) );
 
+    }
 
+    private static void shuffle(ArrayList <Players> list) {
+        Random rand = new Random();
+        int shuffleOrder = rand.nextInt( 1,4 );
+        list.get( 0 ).setTestingWord( list.get(shuffleOrder).getSettingWord() );
+        list.get( shuffleOrder ).setTestingWord( list.get(0).getSettingWord() );
+        List <Integer> numArr =  new ArrayList<>( );
+        Collections.addAll( numArr, 1 ,2 , 3 );
+        Integer[] integers = numArr.stream( ).filter( integer -> integer != shuffleOrder ).toArray( Integer[]::new );
+        list.get( integers[0] ).setTestingWord( list.get( integers[1] ).getSettingWord() );
+        list.get( integers[1] ).setTestingWord( list.get( integers[0] ).getSettingWord() );
     }
 
     public void inputKeyboard(KeyEvent keyEvent) {
@@ -176,36 +156,6 @@ public class SceneController {
         s = keyEvent.getText( );
         System.out.println(s );
 
-    }
-
-    public void setPlayer1(Players player1) {
-        this.player1 = player1;
-    }
-
-    public  void setPlayer2(Players player2){
-        this.player2 = player2;
-    }
-    public  void setPlayer3(Players player3){
-        this.player3 = player3;
-    }
-    public  void setPlayer4(Players player4){
-        this.player4 = player4;
-    }
-
-    public Players getPlayer1() {
-        return player1;
-    }
-
-    public Players getPlayer2() {
-        return player2;
-    }
-
-    public Players getPlayer3() {
-        return player3;
-    }
-
-    public Players getPlayer4() {
-        return player4;
     }
 
     public void selectPlayer1(ActionEvent actionEvent) {
@@ -217,8 +167,6 @@ public class SceneController {
 
         selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
     }
-
-
 
 
     public void selectPlayer2(ActionEvent actionEvent) {
@@ -286,7 +234,7 @@ public class SceneController {
     private void selectImage(Players players, ImageView imageView, Image image1, Image image2, Image image3,
                              Image image4, Image image5) {
         switch (players.getImage()){
-            case(5)->{imageView.setVisible( true ); }
+            case(5)->{imageView.setVisible( false ); }
             case(4)->{imageView.setVisible( true ); imageView.setImage( image1 );}
             case(3)->{imageView.setVisible( true ); imageView.setImage( image2 );}
             case(2)->{imageView.setVisible( true ); imageView.setImage( image3 );}
