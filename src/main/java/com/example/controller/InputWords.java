@@ -1,11 +1,12 @@
 package com.example.controller;
 
+import com.example.demo.SceneController;
 import com.example.pojo.Players;
 
 import java.util.*;
 
 public class InputWords {
-    public static void inputWord(ArrayList <Players> list){
+    public static void inputWord(ArrayList<Players> list){
 
 //        will connect to javaFX
         Scanner scanner = new Scanner( System.in );

@@ -15,7 +15,7 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Scene.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("scene.fxml")));
         Scene scene = new Scene(root);
         String css = Objects.requireNonNull(this.getClass().getResource("Highlight.css")).toExternalForm();
         scene.getStylesheets().add(css);
