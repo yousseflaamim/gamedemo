@@ -36,7 +36,7 @@ public class InputWords {
         );
     }
 
-    private static void shuffle(ArrayList <Players> list) {
+    public static void shuffle(ArrayList <Players> list) {
         Random rand = new Random();
         int shuffleOrder = rand.nextInt( 1,4 );
         list.get( 0 ).setTestingWord( list.get(shuffleOrder).getSettingWord() );

@@ -122,7 +122,7 @@ public class SceneController {
         this.player3.setSettingWord( guess3Text );
         this.player4.setSettingWord( guess4Text );
 
-        shuffle( list );
+        InputWords.shuffle( list );
 
 
 
@@ -139,17 +139,6 @@ public class SceneController {
 
     }
 
-    private static void shuffle(ArrayList <Players> list) {
-        Random rand = new Random();
-        int shuffleOrder = rand.nextInt( 1,4 );
-        list.get( 0 ).setTestingWord( list.get(shuffleOrder).getSettingWord() );
-        list.get( shuffleOrder ).setTestingWord( list.get(0).getSettingWord() );
-        List <Integer> numArr =  new ArrayList<>( );
-        Collections.addAll( numArr, 1 ,2 , 3 );
-        Integer[] integers = numArr.stream( ).filter( integer -> integer != shuffleOrder ).toArray( Integer[]::new );
-        list.get( integers[0] ).setTestingWord( list.get( integers[1] ).getSettingWord() );
-        list.get( integers[1] ).setTestingWord( list.get( integers[0] ).getSettingWord() );
-    }
 
     public void inputKeyboard(KeyEvent keyEvent) {
 
