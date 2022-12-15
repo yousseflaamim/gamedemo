@@ -174,6 +174,7 @@ public class SceneController {
     public void inputKeyboard(KeyEvent keyEvent) {
 
         s = keyEvent.getText( );
+        System.out.println(s );
 
     }
 
@@ -285,12 +286,12 @@ public class SceneController {
     private void selectImage(Players players, ImageView imageView, Image image1, Image image2, Image image3,
                              Image image4, Image image5) {
         switch (players.getImage()){
-            case(5)->imageView.setVisible( false );
-            case(4)->imageView.setImage( image1 );
-            case(3)->imageView.setImage( image2 );
-            case(2)->imageView.setImage( image3 );
-            case(1)->imageView.setImage( image4 );
-            case(0)->imageView.setImage( image5 );
+            case(5)->{imageView.setVisible( true ); }
+            case(4)->{imageView.setVisible( true ); imageView.setImage( image1 );}
+            case(3)->{imageView.setVisible( true ); imageView.setImage( image2 );}
+            case(2)->{imageView.setVisible( true ); imageView.setImage( image3 );}
+            case(1)->{imageView.setVisible( true ); imageView.setImage( image4 );}
+            case(0)->{imageView.setVisible( true ); imageView.setImage( image5 );}
         }
     }
 
