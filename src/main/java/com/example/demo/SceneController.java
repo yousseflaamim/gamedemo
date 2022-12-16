@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import com.example.controller.InputWords;
 import com.example.pojo.Players;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,18 +9,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Font;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.function.Consumer;
+import java.util.*;
 
 
 public class SceneController {
@@ -77,8 +71,13 @@ public class SceneController {
     Players player3 = new Players( );
     Players player4 = new Players( );
 
-    String s = new String(  );
+    String s = "";
 
+    ArrayList<Players> list = new ArrayList<>();
+
+    Integer playerturn = 0;
+
+    Object[] tmpArr = new Object[3];
 
 
     public  void switchToScene1(ActionEvent event) throws IOException {
@@ -106,8 +105,13 @@ public class SceneController {
 
     }
 
+
+
     public void startGame(ActionEvent actionEvent) {
 
+
+
+        Collections.addAll( list, this.player1, this.player2, this.player3, this.player4 );
 
 
 
@@ -120,56 +124,43 @@ public class SceneController {
         this.player3.setSettingWord( guess3Text );
         this.player4.setSettingWord( guess4Text );
 
+        for (Players players : list) {
+            players.setTestingWord( players.getSettingWord() );
 
-
-
-        Random random = new Random( );
-        int i = random.nextInt( 1, 4 );
-        switch (i){
-            case(1)->{
-                this.player1.setTestingWord( this.player2.getSettingWord() );
-                this.player2.setTestingWord( this.player1.getSettingWord() );
-                this.player3.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player3.getSettingWord() );
-            }
-            case(2)->{
-                this.player1.setTestingWord( this.player3.getSettingWord() );
-                this.player3.setTestingWord( this.player1.getSettingWord() );
-                this.player2.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player2.getSettingWord() );
-            }
-            case(3)->{
-                this.player1.setTestingWord( this.player4.getSettingWord() );
-                this.player4.setTestingWord( this.player1.getSettingWord() );
-                this.player2.setTestingWord( this.player3.getSettingWord() );
-                this.player3.setTestingWord( this.player2.getSettingWord() );
-            }
         }
 
-        this.player1.setShowingList( this.player1.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player2.setShowingList( this.player2.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player3.setShowingList( this.player3.getTestingWord().toLowerCase().trim().toCharArray() );
-        this.player4.setShowingList( this.player4.getTestingWord().toLowerCase().trim().toCharArray() );
-
-        char[] tmp1 = new char[this.player1.getTestingWord( ).trim( ).length( )];
-        char[] tmp2 = new char[this.player2.getTestingWord( ).trim( ).length( )];
-        char[] tmp3 = new char[this.player3.getTestingWord( ).trim( ).length( )];
-        char[] tmp4 = new char[this.player4.getTestingWord( ).trim( ).length( )];
-
-        this.player1.setTestList( tmp1 );
-        this.player2.setTestList( tmp2 );
-        this.player3.setTestList( tmp3 );
-        this.player4.setTestList( tmp4 );
+//        InputWords.shuffle( list );
 
 
-        System.out.println(this.player1 );
-        System.out.println(this.player2 );
-        System.out.println(this.player3 );
-        System.out.println(this.player4 );
-        System.out.println(s );
 
+        list.forEach( players -> players.setShowingList( players.getTestingWord().toCharArray() ) );
+        list.forEach(players -> {
+                    int length = players.getShowingList( ).length;
+                    char[] tmp = new char[length];
+                    players.setTestList( tmp );
+                }
+        );
+
+
+        word1.setText( initText( this.player1) );
+        word2.setText( initText( this.player2) );
+        word3.setText( initText( this.player3) );
+        word4.setText( initText( this.player4) );
+
+        word1.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
+        list.forEach(  players-> System.out.println(players ) );
 
     }
+
+    private String initText(Players players) {
+        StringBuilder s = new StringBuilder( );
+
+        for (int i = 0; i < players.getShowingList( ).length; i++) {
+            s.append( "*" );
+        }
+        return s.toString();
+    }
+
 
     public void inputKeyboard(KeyEvent keyEvent) {
 
@@ -178,85 +169,70 @@ public class SceneController {
 
     }
 
-    public void setPlayer1(Players player1) {
-        this.player1 = player1;
-    }
-
-    public  void setPlayer2(Players player2){
-        this.player2 = player2;
-    }
-    public  void setPlayer3(Players player3){
-        this.player3 = player3;
-    }
-    public  void setPlayer4(Players player4){
-        this.player4 = player4;
-    }
-
-    public Players getPlayer1() {
-        return player1;
-    }
-
-    public Players getPlayer2() {
-        return player2;
-    }
-
-    public Players getPlayer3() {
-        return player3;
-    }
-
-    public Players getPlayer4() {
-        return player4;
-    }
-
     public void selectPlayer1(ActionEvent actionEvent) {
 
+       tmpArr = getTmp(this.player1, s );
 
-        String word = getTmp(this.player1, s );
+        word1.setText( (String) tmpArr[0] );
+        System.out.println(" count " + tmpArr[1] + " playerturn " + tmpArr[2] );
 
-        word1.setText( word );
+        playerturn = checkPlayersTurn( tmpArr);
 
-        selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
+        list.forEach(  players -> System.out.print(players.getImage()));
+
+//        selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
     }
-
 
 
 
     public void selectPlayer2(ActionEvent actionEvent) {
 
-        String word = getTmp(this.player2, s );
+        tmpArr = getTmp(this.player2, s );
 
-        word2.setText( word );
+        word2.setText( (String) tmpArr[0] );
+        System.out.println("count " + tmpArr[1] + " playerturn " + tmpArr[2] );
 
-        selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
+        playerturn = checkPlayersTurn( tmpArr);
 
+        list.forEach(  players -> System.out.print(players.getImage()));
 
-
+//        selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
 
     }
 
     public void selectPlayer3(ActionEvent actionEvent) {
-        String word = getTmp(this.player3, s );
+       tmpArr= getTmp(this.player3, s );
 
-        word3.setText( word );
+        word3.setText( (String) tmpArr[0] );
+        System.out.println("count " + tmpArr[1] + " playerturn " + tmpArr[2] );
 
-        selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
+        playerturn = checkPlayersTurn( tmpArr);
 
+        list.forEach(  players -> System.out.print(players.getImage()));
 
+//        selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
 
     }
 
     public void selectPlayer4(ActionEvent actionEvent) {
 
-        String word = getTmp(this.player4, s );
+        tmpArr = getTmp(this.player4, s );
 
-        word4.setText( word );
+        word4.setText( (String) tmpArr[0] );
 
-        selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
+        System.out.println("count " + tmpArr[1] + " playerturn " + tmpArr[2] );
+
+        playerturn = checkPlayersTurn( tmpArr);
+
+        list.forEach(  players -> System.out.print(players.getImage()));
+//        selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
     }
 
-    private String getTmp(Players player, String s) {
+    private String[] getTmp(Players player, String s) {
+        playerturn++;
+        String[] arr = new String[3];
         String word = "";
-        int count = player.getImage();
+        Integer count = 0;
         char[] chars = s.toCharArray( );
         char[] list = player.getShowingList( );
         char[] tmp = player.getTestList();
@@ -264,12 +240,10 @@ public class SceneController {
         for (int i = 0; i < list.length; i++) {
             if(list[i] == chars[0]){
                 tmp[i] = list[i];
-                count--;
-
+                count++;
             }
         }
         player.setTestList( tmp );
-        player.setImage( count );
 
         for (char c : tmp) {
             if (c == 0){
@@ -280,13 +254,58 @@ public class SceneController {
 
         }
         System.out.println(player );
-        return word;
+
+        arr[0] = word;
+        arr[1] = count+"";
+        arr[2] = playerturn+"";
+
+        return arr;
     }
+
+    private Integer checkPlayersTurn( Object[] tmpArr) {
+        playerturn = Integer.parseInt( (String) tmpArr[2] );
+
+        switch (playerturn%4){
+            case 1 -> {
+                if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player1.setImage( this.player1.getImage() - 1);}
+                selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
+
+                word2.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
+                word1.setStyle("-fx-background-color:rgba(0,0,255,0);");
+
+
+            }
+            case 2-> {
+                if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player2.setImage( this.player2.getImage() - 1);}
+                selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
+
+                word3.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
+                word2.setStyle("-fx-background-color:rgba(0,0,255,0);");
+
+            }
+            case 3-> {
+                if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player3.setImage( this.player3.getImage() - 1);}
+                selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
+
+                word4.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
+                word3.setStyle("-fx-background-color:rgba(0,0,255,0);");
+            }
+            case 0-> {
+                if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player4.setImage( this.player4.getImage() - 1);}
+                selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
+
+                word1.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
+                word4.setStyle("-fx-background-color:rgba(0,0,255,0);");
+            }
+        }
+        return playerturn;
+    }
+
 
     private void selectImage(Players players, ImageView imageView, Image image1, Image image2, Image image3,
                              Image image4, Image image5) {
         switch (players.getImage()){
-            case(5)->{imageView.setVisible( true ); }
+            case(5)->{imageView.setVisible( false ); }
             case(4)->{imageView.setVisible( true ); imageView.setImage( image1 );}
             case(3)->{imageView.setVisible( true ); imageView.setImage( image2 );}
             case(2)->{imageView.setVisible( true ); imageView.setImage( image3 );}
