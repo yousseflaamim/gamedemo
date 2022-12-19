@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.util.*;
 
@@ -71,7 +72,7 @@ public class SceneController {
     Players player3 = new Players( );
     Players player4 = new Players( );
 
-    String s = "";
+    String s = "z";
 
     ArrayList<Players> list = new ArrayList<>();
 
@@ -166,7 +167,6 @@ public class SceneController {
 
         s = keyEvent.getText( );
         System.out.println(s );
-
     }
 
     public void selectPlayer1(ActionEvent actionEvent) {
