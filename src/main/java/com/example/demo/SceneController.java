@@ -91,27 +91,23 @@ public class SceneController {
     void setClock() throws FileNotFoundException {
         clock.setImage( new Image( new FileInputStream( "src/main/resources/com/example/demo/images/timer.gif" ) ) );
         clock.setVisible( true );
-        Timer t = new Timer(  );
+        Timer t = new Timer( );
         t.schedule( new TimerTask( ) {
             @Override
             public void run() {
-                closeClock();
+                Platform.runLater( new Runnable( ) {
+                    @Override
+                    public void run() {
+                        clock.setVisible( false );
+                    }
+
+                } );
             }
         }, 7000L );
-
-    }
-
-    void closeClock(){
-        Platform.runLater( new Runnable( ) {
-            @Override
-            public void run() {
-                clock.setVisible( false );
-            }
-        } );
     }
 
 
-    public  void switchToScene1(ActionEvent event) throws IOException {
+    public void switchToScene1(ActionEvent event) throws IOException {
         Parent root =  FXMLLoader.load(getClass().getResource("Scene.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene=new Scene(root);
@@ -119,7 +115,7 @@ public class SceneController {
         stage.show();
 
     }
-    public  void switchToScene2(ActionEvent event) throws IOException {
+    public void switchToScene2(ActionEvent event) throws IOException {
 
         Parent root =  FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage= (Stage) ((Node)event.getSource()).getScene().getWindow();
