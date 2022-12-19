@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.pojo.Players;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,8 +17,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.sound.midi.Soundbank;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Predicate;
 
 
 public class SceneController {
@@ -59,6 +64,7 @@ public class SceneController {
     public Image img4Horse5;
     public Image img4Horse6;
     public Image img4Horse8;
+    public ImageView clock;
 
     private Stage stage;
     private Scene scene;
@@ -79,6 +85,30 @@ public class SceneController {
     Integer playerturn = 0;
 
     Object[] tmpArr = new Object[3];
+
+
+
+    void setClock() throws FileNotFoundException {
+        clock.setImage( new Image( new FileInputStream( "src/main/resources/com/example/demo/images/timer.gif" ) ) );
+        clock.setVisible( true );
+        Timer t = new Timer(  );
+        t.schedule( new TimerTask( ) {
+            @Override
+            public void run() {
+                closeClock();
+            }
+        }, 7000L );
+
+    }
+
+    void closeClock(){
+        Platform.runLater( new Runnable( ) {
+            @Override
+            public void run() {
+                clock.setVisible( false );
+            }
+        } );
+    }
 
 
     public  void switchToScene1(ActionEvent event) throws IOException {
@@ -108,7 +138,7 @@ public class SceneController {
 
 
 
-    public void startGame(ActionEvent actionEvent) {
+    public void startGame(ActionEvent actionEvent) throws FileNotFoundException {
 
 
 
@@ -150,6 +180,8 @@ public class SceneController {
 
         word1.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
         list.forEach(  players-> System.out.println(players ) );
+        setClock();
+
 
     }
 
@@ -169,7 +201,7 @@ public class SceneController {
         System.out.println(s );
     }
 
-    public void selectPlayer1(ActionEvent actionEvent) {
+    public void selectPlayer1(ActionEvent actionEvent) throws FileNotFoundException {
 
        tmpArr = getTmp(this.player1, s );
 
@@ -179,13 +211,14 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
+        setClock();
 
 //        selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
     }
 
 
 
-    public void selectPlayer2(ActionEvent actionEvent) {
+    public void selectPlayer2(ActionEvent actionEvent) throws FileNotFoundException {
 
         tmpArr = getTmp(this.player2, s );
 
@@ -195,12 +228,13 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
+        setClock();
 
 //        selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
 
     }
 
-    public void selectPlayer3(ActionEvent actionEvent) {
+    public void selectPlayer3(ActionEvent actionEvent) throws FileNotFoundException {
        tmpArr= getTmp(this.player3, s );
 
         word3.setText( (String) tmpArr[0] );
@@ -209,12 +243,13 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
+        setClock();
 
 //        selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
 
     }
 
-    public void selectPlayer4(ActionEvent actionEvent) {
+    public void selectPlayer4(ActionEvent actionEvent) throws FileNotFoundException {
 
         tmpArr = getTmp(this.player4, s );
 
@@ -225,6 +260,7 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
+        setClock();
 //        selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
     }
 
@@ -268,6 +304,7 @@ public class SceneController {
         switch (playerturn%4){
             case 1 -> {
                 if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player1.setImage( this.player1.getImage() - 1);}
+                if(list.stream().filter(  players-> players.getImage() <= 0 ).count()>=3 ) {System.exit( 0 ) ;}
                 selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
 
                 word2.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
@@ -277,6 +314,7 @@ public class SceneController {
             }
             case 2-> {
                 if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player2.setImage( this.player2.getImage() - 1);}
+                if(list.stream().filter(  players-> players.getImage() <= 0 ).count()>=3 ) {System.exit( 0 ) ;}
                 selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
 
                 word3.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
@@ -285,6 +323,7 @@ public class SceneController {
             }
             case 3-> {
                 if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player3.setImage( this.player3.getImage() - 1);}
+                if(list.stream().filter(  players-> players.getImage() <= 0 ).count()>=3 ) {System.exit( 0 ) ;}
                 selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
 
                 word4.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
@@ -292,6 +331,7 @@ public class SceneController {
             }
             case 0-> {
                 if(Integer.parseInt( (String) tmpArr[1]) == 0) { this.player4.setImage( this.player4.getImage() - 1);}
+                if(list.stream().filter(  players-> players.getImage() <= 0 ).count()>=3 ) {System.exit( 0 ) ;}
                 selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
 
                 word1.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
