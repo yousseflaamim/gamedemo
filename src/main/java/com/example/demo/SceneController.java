@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.function.Predicate;
 
+import static java.lang.Math.round;
+
 
 public class SceneController {
     public Button start;
@@ -86,24 +88,29 @@ public class SceneController {
 
     Object[] tmpArr = new Object[3];
 
+    Timer t = new Timer( );
 
 
-    void setClock() throws FileNotFoundException {
+
+     void setClock(Timer t) throws FileNotFoundException {
+
         clock.setImage( new Image( new FileInputStream( "src/main/resources/com/example/demo/images/timer.gif" ) ) );
         clock.setVisible( true );
-        Timer t = new Timer( );
-        t.schedule( new TimerTask( ) {
+
+         t.schedule( new TimerTask( ) {
             @Override
             public void run() {
-                Platform.runLater( new Runnable( ) {
-                    @Override
-                    public void run() {
-                        clock.setVisible( false );
-                    }
 
-                } );
+                    Platform.runLater( new Runnable( ) {
+                        @Override
+                        public void run() {
+                            clock.setVisible( false );
+                        }
+                    } );
+
             }
-        }, 7000L );
+
+        }, 9000L );
     }
 
 
@@ -175,8 +182,11 @@ public class SceneController {
         word4.setText( initText( this.player4) );
 
         word1.setStyle( "-fx-background-color:rgba(255, 255, 68,0.7);" );
-        list.forEach(  players-> System.out.println(players ) );
-        setClock();
+        list.forEach( System.out::println );
+
+
+//        setClock(t);
+
 
 
     }
@@ -207,7 +217,13 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
-        setClock();
+
+
+
+
+
+//        setClock(t);
+
 
 //        selectImage(this.player1, img1, img1Horse3, img1Horse4,img1Horse5,img1Horse6,img1Horse8 );
     }
@@ -224,7 +240,10 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
-        setClock();
+
+
+//        setClock(t);
+
 
 //        selectImage(this.player2, img2, img2Horse3, img2Horse4,img2Horse5,img2Horse6,img2Horse8 );
 
@@ -239,7 +258,10 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
-        setClock();
+
+
+//        setClock(t);
+
 
 //        selectImage(this.player3, img3, img3Horse3, img3Horse4,img3Horse5,img3Horse6,img3Horse8 );
 
@@ -256,7 +278,10 @@ public class SceneController {
         playerturn = checkPlayersTurn( tmpArr);
 
         list.forEach(  players -> System.out.print(players.getImage()));
-        setClock();
+
+
+//        setClock(t);
+
 //        selectImage(this.player4, img4, img4Horse3, img4Horse4,img4Horse5,img4Horse6,img4Horse8 );
     }
 
