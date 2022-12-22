@@ -240,5 +240,10 @@
                 <Image fx:id="img4Horse8" url="@images/0.png" />
             </image>
         </ImageView>
+      <ImageView id="clock" fx:id="clock" fitHeight="55.0" fitWidth="86.0" layoutX="309.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/timer.gif" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
